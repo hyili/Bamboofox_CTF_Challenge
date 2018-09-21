@@ -1,0 +1,11 @@
+- target
+    - decrypt the jpg file contained in RSA.tgz
+- answer
+    - use RsaCtfTool to crack rsa pub.pem to get the rsa private key store into private.key
+    - use private.key with openssl command to crack aeskey.rsa.enc and get aes key then store into aeskey
+    - use aeskey with openssl command to decrypt flag.jpg.aes.enc
+        - openssl enc -d -aes128 -in flag.jpg.enc -out flag_-aes128.jpg -pass file:aeskey
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/1/challenges/8
+    - https://raymii.org/s/tutorials/Encrypt_and_decrypt_files_to_public_keys_via_the_OpenSSL_Command_Line.html
+    - https://github.com/Ganapati/RsaCtfTool
