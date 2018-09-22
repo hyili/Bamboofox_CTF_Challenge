@@ -7,10 +7,7 @@ r = remote(host="bamboofox.cs.nctu.edu.tw", port=11200)
 script = "./decr.sh"
 
 
-# Exploit here
-print(" [*] Reading data")
-
-for i in range(0, 100, 1):
+def Round(i, algo):
     ret = r.recvuntil("-----BEGIN PUBLIC KEY-----\n", drop=True)
     print(ret)
     
@@ -26,7 +23,7 @@ for i in range(0, 100, 1):
     
     # parse to decr.sh
     print(" [*] Decrypting")
-    out = subprocess.check_output([script, pub_key, secret_msg, str(i+1)])
+    out = subprocess.check_output([script, algo, pub_key, secret_msg, str(i+1)])
     
     ans = out.split(b"\n")
     print(ans)
@@ -46,5 +43,12 @@ for i in range(0, 100, 1):
     
     data = q
     r.sendline(data)
+
+# Exploit here
+print(" [*] Reading data")
+
+for i in range(0, 100, 1):
+	Round(i, algo="siqs")
+Round(i, algo="wiener")
 
 r.interactive()

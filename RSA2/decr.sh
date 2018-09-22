@@ -1,24 +1,27 @@
 #!/bin/sh
 
+WorkPlace="../tool/RsaCtfTool"
+cd $WorkPlace
+
 # variable
-RsaCtfTool="../tool/RsaCtfTool/RsaCtfTool.py"
-TempDir="../tool/Temp"
-Error="/tmp/tmp$3"
+RsaCtfTool="./RsaCtfTool.py"
+TempDir="../Temp"
+Error="/tmp/tmp$4"
 
 # prepare
 date
 echo "-----BEGIN PUBLIC KEY-----
-$1
------END PUBLIC KEY-----" > "$TempDir/pub-$3.pem"
-echo "$2" > "$TempDir/msg-$3"
+$2
+-----END PUBLIC KEY-----" > "$TempDir/pub-$4.pem"
+echo "$3" > "$TempDir/msg-$4"
 
 # crack
 date
 while [ 1 == 1 ]; do
 ## BOOMMMMMM
-    $RsaCtfTool --publickey "$TempDir/pub-$3.pem" --private 1> "$TempDir/priv-$3.key" 2> "$Error"
-    if [ -f "$TempDir/priv-$3.key" ]; then
-        result=`cat "$TempDir/priv-$3.key" | wc -l | tr -d " "`
+    $RsaCtfTool --publickey "$TempDir/pub-$4.pem" --private --attack "$1" 1> "$TempDir/priv-$4.key" 2> "$Error"
+    if [ -f "$TempDir/priv-$4.key" ]; then
+        result=`cat "$TempDir/priv-$4.key" | wc -l | tr -d " "`
         if [ $(($result)) -lt 4 ]; then
             >&2 printf " [-] Failed once."
             continue
@@ -30,13 +33,13 @@ while [ 1 == 1 ]; do
     fi
 done
 date
-$RsaCtfTool --dumpkey --key "$TempDir/priv-$3.key" 1> "$TempDir/priv_para-$3.key"
+$RsaCtfTool --dumpkey --key "$TempDir/priv-$4.key" 1> "$TempDir/priv_para-$4.key"
 
-base64 --decode "$TempDir/msg-$3" > "$TempDir/ori_msg-$3"
-openssl rsautl -decrypt -inkey "$TempDir/priv-$3.key" -in "$TempDir/ori_msg-$3" -out "$TempDir/ans-$3"
+base64 --decode "$TempDir/msg-$4" > "$TempDir/ori_msg-$4"
+openssl rsautl -decrypt -inkey "$TempDir/priv-$4.key" -in "$TempDir/ori_msg-$4" -out "$TempDir/ans-$4"
 date
 
 # output
-cat "$TempDir/ans-$3"
+cat "$TempDir/ans-$4"
 printf "\n"
-cat "$TempDir/priv_para-$3.key" | awk -F' ' '/\[\*\] (p|q):/{print $3}'
+cat "$TempDir/priv_para-$4.key" | awk -F' ' '/\[\*\] (p|q):/{print $3}'
