@@ -1,0 +1,25 @@
+- target
+    - using BOF method return to libc 0x0003fe70 system
+    - pass /bin/sh parameter
+- answer
+    - get puts GOT entry 0x0804a014
+        - objdump -d ret2libc
+    - get puts GOT offset 0x00064da0
+        - readelf -s lib.6.so
+    - get GOT base entry 0x0804a014 - 0x00064da0 = 0x07fe5274
+    - get system GOT offset 0x0003fe70
+        - readelf -s lib.6.so
+    - get system GOT entry 0x07fe5274 + 0x0003fe70 = 0x080250e4
+    - using BOF
+        - using gdb
+            - layout asm
+            - x/20x $sp
+                - print stack info
+        - find main()'s return address
+        - then create a input string: padding + system_address + "AAAA" + str_address
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/1/challenges/7
+    - https://stackoverflow.com/questions/21017698/converting-int-to-bytes-in-python-3
+    - https://stackoverflow.com/questions/209513/convert-hex-string-to-int-in-python
+    - https://stackoverflow.com/questions/6624453/whats-the-correct-way-to-convert-bytes-to-a-hex-string-in-python-3
+    - https://yojo3000.github.io/CTF/Return-to-libc/
