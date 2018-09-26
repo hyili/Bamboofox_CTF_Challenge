@@ -1,3 +1,9 @@
 - target
+    - decrypt 100 + 1 RSA pairs
 - answer
+    - using RsaCtfTool.py to decrypt
+    - make sure that siqs.py file is correct executed
+    - run RSA2.py to start decrypt
 - refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/1/challenges/9
+    - https://github.com/Ganapati/RsaCtfTool
