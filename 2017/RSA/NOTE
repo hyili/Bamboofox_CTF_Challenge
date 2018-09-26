@@ -1,0 +1,7 @@
+- target
+    - using N, d to decode the ciphertext
+- answer
+    - calculate according to RSA's algorithm
+- refs
+    - https://www.cs.drexel.edu/~introcs/Fa11/notes/10.1_Cryptography/RSA_Express_EncryptDecrypt.html
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/85
