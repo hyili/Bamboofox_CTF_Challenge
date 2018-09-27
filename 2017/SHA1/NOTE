@@ -1,0 +1,16 @@
+- target
+    - find a SHA1 collision pair to send to remote host
+    - username != password
+    - sha1(username) == sha1(password)
+- answer
+    - using google's SHA1's collision pdf file
+        - shattered-1.pdf
+        - shattered-2.pdf
+    - then use base 64 to encode
+        - in Centos, using "-w 0" to disable line wrapper
+            - cat shattered-1.pdf | base64 -w 0 > shattered-1-base64.pdf
+            - cat shattered-2.pdf | base64 -w 0 > shattered-2-base64.pdf
+    - then send to remote
+- refs
+    - https://shattered.io/
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/84

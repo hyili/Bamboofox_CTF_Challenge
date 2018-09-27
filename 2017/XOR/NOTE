@@ -1,0 +1,6 @@
+- target
+    - find the key in the file
+- answer
+    - ... just cat the file, then you can find the key
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/82

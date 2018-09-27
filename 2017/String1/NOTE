@@ -1,0 +1,6 @@
+- target
+    - decode the hex string
+- answer
+    - using python3, bytes.fromhex() to sol this
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/73

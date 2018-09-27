@@ -1,0 +1,9 @@
+- target
+    - decode the ciphertext
+- answer
+    - find the shift number of caesar cipher
+        - 13
+    - divide uppercase and lowercase
+- refs
+    - https://cryptii.com/pipes/caesar-cipher
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/77

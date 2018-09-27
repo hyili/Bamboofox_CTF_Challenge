@@ -1,0 +1,6 @@
+- target
+    - decode base64 string
+- answer
+    - echo "QkFNQk9PRk9Ye0JhU0U2NF9hLXpBLVowLTkrLz19" | base64 -d
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/76

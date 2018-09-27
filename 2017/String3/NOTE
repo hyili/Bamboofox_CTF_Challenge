@@ -1,0 +1,7 @@
+- target
+    - decode the dec string
+- answer
+    - transform to int first, then to hex
+    - using python3, bytes.fromhex() to sol this
+- refs
+    - https://bamboofox.cs.nctu.edu.tw/courses/4/challenges/75

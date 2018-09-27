@@ -1,0 +1,3 @@
+#!/usr/bin/env python3
+
+print(bytes.fromhex("42414d424f4f464f587b484558746f4153434949697345415353535353597d").decode())
